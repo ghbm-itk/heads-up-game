@@ -1,0 +1,35 @@
+Pizza
+Sushi
+Burger
+Tacos
+Lasagna
+Spaghetti
+Salad
+Sandwich
+Hot Dog
+French Fries
+Burrito
+Pad Thai
+Ramen
+Curry
+Pho
+Paella
+Risotto
+Steak
+Chicken Nuggets
+Fish and Chips
+Dumplings
+Fried Rice
+Quesadilla
+Falafel
+Hummus
+Kebab
+Bagel
+Croissant
+Pancakes
+Waffles
+Omelette
+Nachos
+Meatballs
+Fried Chicken
+Mac and Cheese

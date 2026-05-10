@@ -1,0 +1,31 @@
+Coffee
+Tea
+Hot Chocolate
+Smoothie
+Lemonade
+Milkshake
+Cola
+Orange Juice
+Apple Juice
+Sparkling Water
+Beer
+Wine
+Champagne
+Whiskey
+Vodka
+Rum
+Gin
+Tequila
+Margarita
+Mojito
+Martini
+Pina Colada
+Cocktail
+Cappuccino
+Latte
+Espresso
+Iced Tea
+Energy Drink
+Sangria
+Bloody Mary
+Old Fashioned

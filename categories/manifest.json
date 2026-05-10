@@ -6,7 +6,19 @@
         { "name": "Disney", "file": "disney.txt" },
         { "name": "Marvel", "file": "marvel.txt" },
         { "name": "DC Superheroes", "file": "dc.txt" },
+        { "name": "Star Wars", "file": "starwars.txt" },
+        { "name": "Cartoon Characters", "file": "cartoons.txt" },
+        { "name": "Anime", "file": "anime.txt" },
         { "name": "Book & Movie Characters", "file": "book-movies.txt" }
+      ]
+    },
+    {
+      "name": "People",
+      "categories": [
+        { "name": "Musicians & Bands", "file": "musicians.txt" },
+        { "name": "Athletes", "file": "athletes.txt" },
+        { "name": "Actors & Actresses", "file": "actors.txt" },
+        { "name": "Historical Figures", "file": "history.txt" }
       ]
     },
     {
@@ -15,7 +27,32 @@
         { "name": "Animals", "file": "animals.txt" },
         { "name": "Dinosaurs", "file": "dinosaurs.txt" },
         { "name": "Countries", "file": "countries.txt" },
-        { "name": "Musicians & Bands", "file": "musicians.txt" }
+        { "name": "Capital Cities", "file": "capitals.txt" },
+        { "name": "Famous Landmarks", "file": "landmarks.txt" }
+      ]
+    },
+    {
+      "name": "Entertainment",
+      "categories": [
+        { "name": "Movies", "file": "movies.txt" },
+        { "name": "TV Shows", "file": "tvshows.txt" },
+        { "name": "Songs", "file": "songs.txt" }
+      ]
+    },
+    {
+      "name": "Food & Drink",
+      "categories": [
+        { "name": "Foods", "file": "foods.txt" },
+        { "name": "Desserts", "file": "desserts.txt" },
+        { "name": "Drinks", "file": "drinks.txt" }
+      ]
+    },
+    {
+      "name": "Activities",
+      "categories": [
+        { "name": "Sports", "file": "sports.txt" },
+        { "name": "Professions", "file": "professions.txt" },
+        { "name": "Verbs & Actions", "file": "verbs.txt" }
       ]
     },
     {

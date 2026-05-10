@@ -1,0 +1,35 @@
+Soccer
+Basketball
+American Football
+Baseball
+Tennis
+Golf
+Volleyball
+Hockey
+Cricket
+Rugby
+Boxing
+Wrestling
+Swimming
+Running
+Cycling
+Skiing
+Snowboarding
+Surfing
+Skateboarding
+Archery
+Fencing
+Judo
+Karate
+Taekwondo
+Gymnastics
+Figure Skating
+Bowling
+Darts
+Table Tennis
+Badminton
+Polo
+Sailing
+Rowing
+Horse Racing
+Formula 1
