@@ -12,6 +12,10 @@
   <h1>Heads Up</h1>
   <p style="color: var(--muted); margin: 0 0 2rem 0;">Pick one or more categories</p>
   <div id="category-list"></div>
+  <label class="option-toggle">
+    <input type="checkbox" id="timer-toggle">
+    <span>60-second timer</span>
+  </label>
   <button id="start-btn" disabled>Start</button>
   <div id="category-error"></div>
 </div>
@@ -19,6 +23,7 @@
 <div id="game-screen" class="screen">
   <div class="game-header">
     <button id="quit-btn">&larr; Quit</button>
+    <span id="timer" class="hidden"></span>
     <span id="progress"></span>
   </div>
   <div class="game-body">
@@ -56,6 +61,8 @@ const screens = {
   summary: document.getElementById('summary-screen'),
 };
 
+const TIMER_DURATION = 60;
+
 const state = {
   currentCategories: [],
   selected: new Set(),
@@ -63,6 +70,10 @@ const state = {
   index: 0,
   successCount: 0,
   failCount: 0,
+  timerEnabled: false,
+  timeRemaining: 0,
+  timerInterval: null,
+  endedByTimeout: false,
 };
 
 function showScreen(name) {
@@ -93,17 +104,31 @@ async function loadCategory(file) {
   return text.split('\n').map(s => s.trim()).filter(Boolean);
 }
 
-function renderCategoryList(categories) {
+function renderCategoryList(groups) {
   const list = document.getElementById('category-list');
   list.innerHTML = '';
-  for (const cat of categories) {
-    const btn = document.createElement('button');
-    btn.className = 'category-btn';
-    btn.textContent = cat.name;
-    btn.dataset.file = cat.file;
-    btn.dataset.name = cat.name;
-    btn.addEventListener('click', () => toggleCategory(cat, btn));
-    list.appendChild(btn);
+  for (const group of groups) {
+    const groupEl = document.createElement('div');
+    groupEl.className = 'category-group';
+
+    const heading = document.createElement('h3');
+    heading.className = 'group-heading';
+    heading.textContent = group.name;
+    groupEl.appendChild(heading);
+
+    const grid = document.createElement('div');
+    grid.className = 'group-grid';
+    for (const cat of group.categories) {
+      const btn = document.createElement('button');
+      btn.className = 'category-btn';
+      btn.textContent = cat.name;
+      btn.dataset.file = cat.file;
+      btn.dataset.name = cat.name;
+      btn.addEventListener('click', () => toggleCategory(cat, btn));
+      grid.appendChild(btn);
+    }
+    groupEl.appendChild(grid);
+    list.appendChild(groupEl);
   }
   updateStartButton();
 }
@@ -139,11 +164,51 @@ async function startGame(categories) {
     state.index = 0;
     state.successCount = 0;
     state.failCount = 0;
+    state.timerEnabled = document.getElementById('timer-toggle').checked;
+    state.endedByTimeout = false;
     showScreen('game');
     renderCurrent();
+    startTimer();
   } catch (err) {
     showError(err.message);
   }
+}
+
+function startTimer() {
+  stopTimer();
+  const timerEl = document.getElementById('timer');
+  if (!state.timerEnabled) {
+    timerEl.classList.add('hidden');
+    return;
+  }
+  state.timeRemaining = TIMER_DURATION;
+  timerEl.classList.remove('hidden');
+  renderTimer();
+  state.timerInterval = setInterval(() => {
+    state.timeRemaining--;
+    renderTimer();
+    if (state.timeRemaining <= 0) {
+      state.endedByTimeout = true;
+      stopTimer();
+      showSummary();
+    }
+  }, 1000);
+}
+
+function stopTimer() {
+  if (state.timerInterval !== null) {
+    clearInterval(state.timerInterval);
+    state.timerInterval = null;
+  }
+}
+
+function renderTimer() {
+  const timerEl = document.getElementById('timer');
+  const s = Math.max(0, state.timeRemaining);
+  const mm = Math.floor(s / 60);
+  const ss = String(s % 60).padStart(2, '0');
+  timerEl.textContent = `${mm}:${ss}`;
+  timerEl.classList.toggle('low', s <= 10);
 }
 
 function renderCurrent() {
@@ -164,8 +229,11 @@ function recordAnswer(result) {
 }
 
 function showSummary() {
+  stopTimer();
   const names = state.currentCategories.map(c => c.name).join(', ');
   const label = state.currentCategories.length === 1 ? 'Category' : 'Categories';
+  document.getElementById('summary-title').textContent =
+    state.endedByTimeout ? "Time's up!" : 'All done!';
   document.getElementById('summary-category').textContent = `${label}: ${names}`;
   document.getElementById('summary-success').textContent = state.successCount;
   document.getElementById('summary-fail').textContent = state.failCount;
@@ -189,6 +257,7 @@ document.getElementById('start-btn').addEventListener('click', () => {
 });
 
 document.getElementById('quit-btn').addEventListener('click', () => {
+  stopTimer();
   showScreen('category');
 });
 
@@ -209,8 +278,8 @@ document.addEventListener('keydown', (e) => {
 (async function init() {
   try {
     const manifest = await loadManifest();
-    window.__manifest = manifest.categories;
-    renderCategoryList(manifest.categories);
+    window.__manifest = manifest.groups.flatMap(g => g.categories);
+    renderCategoryList(manifest.groups);
   } catch (err) {
     showError(err.message);
   }

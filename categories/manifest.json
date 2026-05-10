@@ -1,10 +1,20 @@
 {
-  "categories": [
-    { "name": "Disney", "file": "disney.txt" },
-    { "name": "Marvel", "file": "marvel.txt" },
-    { "name": "Animals", "file": "animals.txt" },
-    { "name": "Countries", "file": "countries.txt" },
-    { "name": "DC Superheroes", "file": "dc.txt" },
-    { "name": "Musicians & Bands", "file": "musicians.txt" }
+  "groups": [
+    {
+      "name": "Fictional Characters",
+      "categories": [
+        { "name": "Disney", "file": "disney.txt" },
+        { "name": "Marvel", "file": "marvel.txt" },
+        { "name": "DC Superheroes", "file": "dc.txt" }
+      ]
+    },
+    {
+      "name": "Real World",
+      "categories": [
+        { "name": "Animals", "file": "animals.txt" },
+        { "name": "Countries", "file": "countries.txt" },
+        { "name": "Musicians & Bands", "file": "musicians.txt" }
+      ]
+    }
   ]
 }
