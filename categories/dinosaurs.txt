@@ -1,0 +1,25 @@
+Tyrannosaurus Rex
+Velociraptor
+Triceratops
+Stegosaurus
+Brachiosaurus
+Diplodocus
+Brontosaurus
+Spinosaurus
+Pterodactyl
+Allosaurus
+Ankylosaurus
+Iguanodon
+Pachycephalosaurus
+Parasaurolophus
+Compsognathus
+Gallimimus
+Mosasaurus
+Carnotaurus
+Apatosaurus
+Dilophosaurus
+Pteranodon
+Plesiosaurus
+Giganotosaurus
+Therizinosaurus
+Microraptor
