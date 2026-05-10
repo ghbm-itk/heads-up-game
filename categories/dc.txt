@@ -18,3 +18,25 @@ Zatanna
 Blue Beetle
 Catwoman
 Harley Quinn
+Joker
+Lex Luthor
+The Penguin
+Riddler
+Two-Face
+Bane
+Mr. Freeze
+Scarecrow
+Poison Ivy
+Deathstroke
+Darkseid
+General Zod
+Sinestro
+Black Adam
+Reverse-Flash
+Brainiac
+Ra's al Ghul
+John Constantine
+Swamp Thing
+Alfred Pennyworth
+Lois Lane
+Commissioner Gordon

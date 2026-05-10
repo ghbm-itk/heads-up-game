@@ -5,7 +5,7 @@
       "categories": [
         { "name": "Disney", "file": "disney.txt" },
         { "name": "Marvel", "file": "marvel.txt" },
-        { "name": "DC Superheroes", "file": "dc.txt" },
+        { "name": "DC", "file": "dc.txt" },
         { "name": "Star Wars", "file": "starwars.txt" },
         { "name": "Cartoon Characters", "file": "cartoons.txt" },
         { "name": "Anime", "file": "anime.txt" },
