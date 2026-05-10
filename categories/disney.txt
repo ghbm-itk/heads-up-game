@@ -1,102 +1,102 @@
-Mickey Mouse
-Minnie Mouse
-Donald Duck
-Daisy Duck
-Goofy
-Pluto
-Scrooge McDuck
-Snow White
-Cinderella
-Aurora
-Ariel
-Belle
-Jasmine
-Pocahontas
-Mulan
-Tiana
-Rapunzel
-Merida
-Moana
-Anna
-Elsa
-Aladdin
-Prince Eric
-Beast
-Flynn Rider
-Kristoff
-Hercules
-Tarzan
-Peter Pan
-Simba
-Mufasa
-Nala
-Timon
-Pumbaa
-Scar
-Rafiki
-Olaf
-Sven
-Pascal
-Maximus
-Mother Gothel
-Lilo
-Stitch
-Maui
-Sebastian
-Flounder
-Ursula
-Genie
-Abu
-Iago
-Jafar
-Lumiere
-Mrs. Potts
-Chip
-Cogsworth
-Gaston
-Maleficent
-Cruella de Vil
-Hades
-Megara
-Tinker Bell
-Captain Hook
-Wendy
-Alice
-Cheshire Cat
-Mad Hatter
-Winnie the Pooh
-Tigger
-Eeyore
-Piglet
-Mowgli
-Baloo
-Shere Khan
-Bambi
-Thumper
-Dumbo
-Pinocchio
-Woody
-Buzz Lightyear
-Jessie
-Mr. Potato Head
-Nemo
-Dory
-Marlin
-Sulley
-Mike Wazowski
-Boo
-Lightning McQueen
-Mater
-WALL-E
-EVE
-Remy
-Carl Fredricksen
-Dug
-Joy
-Sadness
-Mr. Incredible
-Elastigirl
-Edna Mode
-Miguel
-Pongo
-Robin Hood
+Mickey Mouse (Mickey & Friends)
+Minnie Mouse (Mickey & Friends)
+Donald Duck (Mickey & Friends)
+Daisy Duck (Mickey & Friends)
+Goofy (Mickey & Friends)
+Pluto (Mickey & Friends)
+Scrooge McDuck (DuckTales)
+Snow White (Snow White and the Seven Dwarfs)
+Cinderella (Cinderella)
+Aurora (Sleeping Beauty)
+Ariel (The Little Mermaid)
+Belle (Beauty and the Beast)
+Jasmine (Aladdin)
+Pocahontas (Pocahontas)
+Mulan (Mulan)
+Tiana (The Princess and the Frog)
+Rapunzel (Tangled)
+Merida (Brave)
+Moana (Moana)
+Anna (Frozen)
+Elsa (Frozen)
+Aladdin (Aladdin)
+Prince Eric (The Little Mermaid)
+Beast (Beauty and the Beast)
+Flynn Rider (Tangled)
+Kristoff (Frozen)
+Hercules (Hercules)
+Tarzan (Tarzan)
+Peter Pan (Peter Pan)
+Simba (The Lion King)
+Mufasa (The Lion King)
+Nala (The Lion King)
+Timon (The Lion King)
+Pumbaa (The Lion King)
+Scar (The Lion King)
+Rafiki (The Lion King)
+Olaf (Frozen)
+Sven (Frozen)
+Pascal (Tangled)
+Maximus (Tangled)
+Mother Gothel (Tangled)
+Lilo (Lilo & Stitch)
+Stitch (Lilo & Stitch)
+Maui (Moana)
+Sebastian (The Little Mermaid)
+Flounder (The Little Mermaid)
+Ursula (The Little Mermaid)
+Genie (Aladdin)
+Abu (Aladdin)
+Iago (Aladdin)
+Jafar (Aladdin)
+Lumiere (Beauty and the Beast)
+Mrs. Potts (Beauty and the Beast)
+Chip (Beauty and the Beast)
+Cogsworth (Beauty and the Beast)
+Gaston (Beauty and the Beast)
+Maleficent (Sleeping Beauty)
+Cruella de Vil (101 Dalmatians)
+Hades (Hercules)
+Megara (Hercules)
+Tinker Bell (Peter Pan)
+Captain Hook (Peter Pan)
+Wendy (Peter Pan)
+Alice (Alice in Wonderland)
+Cheshire Cat (Alice in Wonderland)
+Mad Hatter (Alice in Wonderland)
+Winnie the Pooh (Winnie the Pooh)
+Tigger (Winnie the Pooh)
+Eeyore (Winnie the Pooh)
+Piglet (Winnie the Pooh)
+Mowgli (The Jungle Book)
+Baloo (The Jungle Book)
+Shere Khan (The Jungle Book)
+Bambi (Bambi)
+Thumper (Bambi)
+Dumbo (Dumbo)
+Pinocchio (Pinocchio)
+Woody (Toy Story)
+Buzz Lightyear (Toy Story)
+Jessie (Toy Story)
+Mr. Potato Head (Toy Story)
+Nemo (Finding Nemo)
+Dory (Finding Nemo)
+Marlin (Finding Nemo)
+Sulley (Monsters, Inc.)
+Mike Wazowski (Monsters, Inc.)
+Boo (Monsters, Inc.)
+Lightning McQueen (Cars)
+Mater (Cars)
+WALL-E (WALL-E)
+EVE (WALL-E)
+Remy (Ratatouille)
+Carl Fredricksen (Up)
+Dug (Up)
+Joy (Inside Out)
+Sadness (Inside Out)
+Mr. Incredible (The Incredibles)
+Elastigirl (The Incredibles)
+Edna Mode (The Incredibles)
+Miguel (Coco)
+Pongo (101 Dalmatians)
+Robin Hood (Robin Hood)
