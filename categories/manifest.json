@@ -15,6 +15,15 @@
         { "name": "Countries", "file": "countries.txt" },
         { "name": "Musicians & Bands", "file": "musicians.txt" }
       ]
+    },
+    {
+      "name": "Brands",
+      "categories": [
+        { "name": "Car Brands", "file": "cars.txt" },
+        { "name": "Food Chains", "file": "food.txt" },
+        { "name": "Websites", "file": "websites.txt" },
+        { "name": "Fashion & Sports", "file": "fashion.txt" }
+      ]
     }
   ]
 }
