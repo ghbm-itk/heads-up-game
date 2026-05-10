@@ -1,0 +1,198 @@
+:root {
+  --fail: #e53935;
+  --fail-dark: #b71c1c;
+  --success: #43a047;
+  --success-dark: #1b5e20;
+  --bg: #1e1e2e;
+  --card: #2a2a3e;
+  --text: #f5f5f5;
+  --muted: #a0a0b0;
+}
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+body {
+  display: flex;
+  flex-direction: column;
+}
+.screen {
+  flex: 1;
+  display: none;
+  flex-direction: column;
+  padding: 2rem;
+}
+.screen.active { display: flex; }
+
+/* Category screen */
+#category-screen {
+  align-items: center;
+  justify-content: center;
+}
+#category-screen h1 {
+  margin: 0 0 2rem 0;
+  font-size: 3rem;
+  letter-spacing: 0.05em;
+}
+#category-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  width: 100%;
+  max-width: 700px;
+}
+.category-btn {
+  padding: 1.5rem;
+  font-size: 1.25rem;
+  background: var(--card);
+  color: var(--text);
+  border: 2px solid transparent;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.1s, border-color 0.2s;
+}
+.category-btn:hover {
+  border-color: var(--text);
+  transform: translateY(-2px);
+}
+.category-btn.selected {
+  border-color: var(--success);
+  background: rgba(67, 160, 71, 0.18);
+}
+
+#start-btn {
+  margin-top: 2rem;
+  padding: 1rem 3rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+  background: var(--success);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: filter 0.1s, opacity 0.2s;
+}
+#start-btn:hover:not(:disabled) { filter: brightness(1.1); }
+#start-btn:disabled {
+  background: var(--card);
+  color: var(--muted);
+  cursor: not-allowed;
+}
+
+/* Game screen */
+#game-screen {
+  padding: 0;
+}
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+.game-header button {
+  background: none;
+  border: 1px solid var(--muted);
+  color: var(--muted);
+  border-radius: 6px;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+.game-header button:hover { color: var(--text); border-color: var(--text); }
+.game-body {
+  flex: 1;
+  display: flex;
+  align-items: stretch;
+}
+.answer-btn {
+  flex: 1;
+  border: none;
+  cursor: pointer;
+  font-size: 4rem;
+  font-weight: bold;
+  color: white;
+  transition: filter 0.1s;
+}
+.answer-btn:hover { filter: brightness(1.1); }
+.answer-btn:active { filter: brightness(0.9); }
+.fail-btn { background: var(--fail); }
+.success-btn { background: var(--success); }
+.character-display {
+  flex: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+}
+#character-name {
+  font-size: clamp(2rem, 6vw, 4.5rem);
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+/* Summary screen */
+#summary-screen {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+#summary-screen h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+.summary-stats {
+  display: flex;
+  gap: 3rem;
+  margin: 2rem 0;
+}
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.stat-value {
+  font-size: 4rem;
+  font-weight: bold;
+}
+.stat-label {
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+.stat.success .stat-value { color: var(--success); }
+.stat.fail .stat-value { color: var(--fail); }
+.summary-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.summary-actions button {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: var(--card);
+  color: var(--text);
+}
+.summary-actions button:hover { filter: brightness(1.2); }
+
+.error {
+  color: var(--fail);
+  background: rgba(229, 57, 53, 0.1);
+  border: 1px solid var(--fail);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+  max-width: 600px;
+}

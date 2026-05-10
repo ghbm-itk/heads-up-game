@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Heads Up</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="category-screen" class="screen active">
+  <h1>Heads Up</h1>
+  <p style="color: var(--muted); margin: 0 0 2rem 0;">Pick one or more categories</p>
+  <div id="category-list"></div>
+  <button id="start-btn" disabled>Start</button>
+  <div id="category-error"></div>
+</div>
+
+<div id="game-screen" class="screen">
+  <div class="game-header">
+    <button id="quit-btn">&larr; Quit</button>
+    <span id="progress"></span>
+  </div>
+  <div class="game-body">
+    <button class="answer-btn fail-btn" data-result="fail" title="Fail">&times;</button>
+    <div class="character-display">
+      <div id="character-name"></div>
+    </div>
+    <button class="answer-btn success-btn" data-result="success" title="Success">&check;</button>
+  </div>
+</div>
+
+<div id="summary-screen" class="screen">
+  <h2 id="summary-title">All done!</h2>
+  <p style="color: var(--muted);" id="summary-category"></p>
+  <div class="summary-stats">
+    <div class="stat success">
+      <div class="stat-value" id="summary-success">0</div>
+      <div class="stat-label">Success</div>
+    </div>
+    <div class="stat fail">
+      <div class="stat-value" id="summary-fail">0</div>
+      <div class="stat-label">Fail</div>
+    </div>
+  </div>
+  <div class="summary-actions">
+    <button id="play-again-btn">Play Again</button>
+    <button id="back-to-categories-btn">Pick New Category</button>
+  </div>
+</div>
+
+<script>
+const screens = {
+  category: document.getElementById('category-screen'),
+  game: document.getElementById('game-screen'),
+  summary: document.getElementById('summary-screen'),
+};
+
+const state = {
+  currentCategories: [],
+  selected: new Set(),
+  characters: [],
+  index: 0,
+  successCount: 0,
+  failCount: 0,
+};
+
+function showScreen(name) {
+  for (const key of Object.keys(screens)) {
+    screens[key].classList.toggle('active', key === name);
+  }
+}
+
+function shuffle(array) {
+  const arr = array.slice();
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+async function loadManifest() {
+  const res = await fetch('categories/manifest.json');
+  if (!res.ok) throw new Error(`Failed to load manifest: ${res.status}`);
+  return res.json();
+}
+
+async function loadCategory(file) {
+  const res = await fetch(`categories/${file}`);
+  if (!res.ok) throw new Error(`Failed to load ${file}: ${res.status}`);
+  const text = await res.text();
+  return text.split('\n').map(s => s.trim()).filter(Boolean);
+}
+
+function renderCategoryList(categories) {
+  const list = document.getElementById('category-list');
+  list.innerHTML = '';
+  for (const cat of categories) {
+    const btn = document.createElement('button');
+    btn.className = 'category-btn';
+    btn.textContent = cat.name;
+    btn.dataset.file = cat.file;
+    btn.dataset.name = cat.name;
+    btn.addEventListener('click', () => toggleCategory(cat, btn));
+    list.appendChild(btn);
+  }
+  updateStartButton();
+}
+
+function toggleCategory(cat, btn) {
+  if (state.selected.has(cat.file)) {
+    state.selected.delete(cat.file);
+    btn.classList.remove('selected');
+  } else {
+    state.selected.add(cat.file);
+    btn.classList.add('selected');
+  }
+  updateStartButton();
+}
+
+function updateStartButton() {
+  const btn = document.getElementById('start-btn');
+  const count = state.selected.size;
+  btn.disabled = count === 0;
+  btn.textContent = count === 0 ? 'Start' : `Start (${count})`;
+}
+
+async function startGame(categories) {
+  try {
+    const lists = await Promise.all(categories.map(c => loadCategory(c.file)));
+    const combined = [...new Set(lists.flat())];
+    if (combined.length === 0) {
+      showError(`Selected categories have no characters.`);
+      return;
+    }
+    state.currentCategories = categories;
+    state.characters = shuffle(combined);
+    state.index = 0;
+    state.successCount = 0;
+    state.failCount = 0;
+    showScreen('game');
+    renderCurrent();
+  } catch (err) {
+    showError(err.message);
+  }
+}
+
+function renderCurrent() {
+  document.getElementById('character-name').textContent = state.characters[state.index];
+  document.getElementById('progress').textContent =
+    `${state.index + 1} / ${state.characters.length}`;
+}
+
+function recordAnswer(result) {
+  if (result === 'success') state.successCount++;
+  else state.failCount++;
+  state.index++;
+  if (state.index >= state.characters.length) {
+    showSummary();
+  } else {
+    renderCurrent();
+  }
+}
+
+function showSummary() {
+  const names = state.currentCategories.map(c => c.name).join(', ');
+  const label = state.currentCategories.length === 1 ? 'Category' : 'Categories';
+  document.getElementById('summary-category').textContent = `${label}: ${names}`;
+  document.getElementById('summary-success').textContent = state.successCount;
+  document.getElementById('summary-fail').textContent = state.failCount;
+  showScreen('summary');
+}
+
+function showError(msg) {
+  const el = document.getElementById('category-error');
+  el.className = 'error';
+  el.textContent = msg + ' (Tip: serve this folder over HTTP — opening index.html directly via file:// blocks fetch.)';
+}
+
+document.querySelectorAll('.answer-btn').forEach(btn => {
+  btn.addEventListener('click', () => recordAnswer(btn.dataset.result));
+});
+
+document.getElementById('start-btn').addEventListener('click', () => {
+  const manifest = window.__manifest || [];
+  const chosen = manifest.filter(c => state.selected.has(c.file));
+  if (chosen.length > 0) startGame(chosen);
+});
+
+document.getElementById('quit-btn').addEventListener('click', () => {
+  showScreen('category');
+});
+
+document.getElementById('play-again-btn').addEventListener('click', () => {
+  startGame(state.currentCategories);
+});
+
+document.getElementById('back-to-categories-btn').addEventListener('click', () => {
+  showScreen('category');
+});
+
+document.addEventListener('keydown', (e) => {
+  if (!screens.game.classList.contains('active')) return;
+  if (e.key === 'ArrowLeft') recordAnswer('fail');
+  else if (e.key === 'ArrowRight') recordAnswer('success');
+});
+
+(async function init() {
+  try {
+    const manifest = await loadManifest();
+    window.__manifest = manifest.categories;
+    renderCategoryList(manifest.categories);
+  } catch (err) {
+    showError(err.message);
+  }
+})();
+</script>
+
+</body>
+</html>

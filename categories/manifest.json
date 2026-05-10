@@ -1,0 +1,8 @@
+{
+  "categories": [
+    { "name": "Disney", "file": "disney.txt" },
+    { "name": "Marvel", "file": "marvel.txt" },
+    { "name": "Animals", "file": "animals.txt" },
+    { "name": "Countries", "file": "countries.txt" }
+  ]
+}
